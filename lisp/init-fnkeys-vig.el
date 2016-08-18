@@ -123,7 +123,6 @@
 ;; add new lines for C-n if the point is at the end of the buffer
 (setq next-line-add-newlines t)
 (global-set-key "\M-`" 'other-frame)
-(global-set-key (kbd "M-p") 'ace-window)
 
 ;; if vertical switch to horizontal & vice versa
 (global-set-key (kbd "C-x |") 'toggle-window-split)
@@ -137,8 +136,15 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-a") 'mc/mark-all-like-this)
 
+(global-set-key (kbd "C-;") 'ace-window)
 
-(global-set-key (kbd "C-;") 'isearch-forward)
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'prev-window)
+
 ;; use goto-line center
 (global-set-key (kbd "M-g M-g") 'goto-line-center)
 
