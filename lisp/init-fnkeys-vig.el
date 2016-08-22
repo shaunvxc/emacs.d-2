@@ -44,12 +44,24 @@
 	  (select-window first-win)
 	  (if this-win-2nd (other-window 1))))))
 
-  ;; remove errant white space at the ends of file
+;; remove errant white space at the ends of file
 (defun squeeze-file ()
   "Deletes all stray whitespace from the current buffer."
   (interactive)
   (delete-trailing-whitespace)
   (delete-trailing-blank-lines))
+
+(defun squeeze-file ()
+  "Deletes all stray whitespace from the current buffer."
+  (interactive)
+  (delete-trailing-whitespace)
+  (delete-trailing-blank-lines))
+
+(defun save-and-squeeze ()
+  "Deletes all stray whitespace from the current buffer."
+  (interactive)
+  (squeeze-file)
+  (save-buffer))
 
 ;; remove any whitespace at the ends of lines
 (defun delete-trailing-blank-lines ()
@@ -74,24 +86,28 @@
   (universal-argument)
   (goto-line line)
   (recenter-top-bottom)
-)
+  )
 
 ;; fns to scroll other frame
 (defun scroll-other-window-up ()
   "Scroll the other window one line up."
   (interactive)
   (scroll-other-window -5)
-)
+  )
 
 ;; rebind scroll-other-window to M-[ and M-]
 (defun scroll-other-window-down ()
   "Scroll the other window one line down."
   (interactive)
   (scroll-other-window 5) ;; move by 5 lines at a time
-)
+  )
 
 ;;; maps the key-binding for the function that removes all white space
 (global-set-key [(ctrl x) (w)] 'squeeze-file)
+(global-set-key [(ctrl x) (s)] 'save-and-sqeeze)
+
+(define-key cua-global-keymap [C-return] nil)
+(global-set-key (kbd "<C-return>") 'er/expand-region)
 
 (global-set-key (kbd "C-x f") 'find-file-in-project)
 

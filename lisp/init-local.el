@@ -120,23 +120,15 @@
          ("C-z" . undo-tree-visualize))
   )
 
-;;; markdown-mode
-(use-package markdown-mode
-             :load-path "elisp"
-             :init
-             (progn
-               (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-               (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-               (add-to-list 'auto-mode-alist '("\\.mdpp$" . markdown-mode))))
 
 (use-package csharp-mode
-             :mode "\\.cs$"
-             :load-path "elisp"
-             :init
-             (progn
-               (require 'flymake)
-               (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
-               ))
+  :mode "\\.cs$"
+  :load-path "elisp"
+  :init
+  (progn
+    (require 'flymake)
+    (add-to-list 'auto-mode-alist '("\\.cs$" . csharp-mode))
+    ))
 
 (use-package nyan-mode
              :if window-system
@@ -153,19 +145,20 @@
 
 
 (use-package dumb-jump
-             :ensure t
-             :config
-             (progn
-               (defun dumb-jump-go-autosave ()
-                 "Save before calling dump-jump-go."
-                 (interactive)
-                 (save-buffer)
-                 (dumb-jump-go)
-                 (recenter-top-bottom)
-                 )
-               )
-             :bind ( ("M-." . dumb-jump-go-autosave))
-             )
+  :ensure t
+  :config
+  (progn
+    (defun dumb-jump-go-autosave ()
+      "Save before calling dump-jump-go."
+      (interactive)
+      (save-buffer)
+      (dumb-jump-go)
+      (recenter-top-bottom)
+      )
+    )
+  :bind ( ("M-." . dumb-jump-go-autosave)
+          ("M-," . dumb-jump-go-back))
+  )
 
 ;; (use-package company                    ; Graphical (auto-)completion
 ;;              :ensure t
@@ -178,14 +171,14 @@
 ;;              :diminish company-mode)
 
 (use-package multiple-cursors                    ; multiple cursors
-             :ensure t
-             :bind ( ("C->" . mc/mark-next-like-this)
-                     ("C-<" . mc/mark-previous-like-this)
-                     ("C-c C-<" . mc/mark-all-like-this)))
+  :ensure t
+  :bind ( ("C->" . mc/mark-next-like-this)
+          ("C-<" . mc/mark-previous-like-this)
+          ("C-c C-<" . mc/mark-all-like-this)))
 
 (use-package expand-region                    ; expand-region
-             :ensure t
-             :bind ( ("C-=" . er/expand-region)))
+  :ensure t
+  :bind ( ("<C-return>" . er/expand-region)))
 
 ;; (use-package dark-mint-theme
 ;;              :ensure t
