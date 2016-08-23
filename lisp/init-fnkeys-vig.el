@@ -102,9 +102,21 @@
   (scroll-other-window 5) ;; move by 5 lines at a time
   )
 
+(defun my-transpose-chars ()
+  "Scroll the other window one line down."
+  (interactive)
+  (backward-char)
+  (transpose-chars 1)  )
+
+
+;; adjust transpose-chars to switch previous two characters
+(global-set-key (kbd "C-t") 'my-transpose-chars)
+
+;; squeeze file when saving
+(global-set-key (kbd "C-x s") 'save-and-squeeze)
+
 ;;; maps the key-binding for the function that removes all white space
 (global-set-key [(ctrl x) (w)] 'squeeze-file)
-(global-set-key [(ctrl x) (s)] 'save-and-sqeeze)
 
 (define-key cua-global-keymap [C-return] nil)
 (global-set-key (kbd "<C-return>") 'er/expand-region)
