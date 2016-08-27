@@ -16,6 +16,11 @@
                   company-dabbrev-other-buffers 'all
                   company-tooltip-align-annotations t))
   (global-set-key (kbd "M-C-/") 'company-complete)
+  (global-set-key (kbd "<tab>") 'company-complete)
+
+  (setq-default tab-always-indent 'complete
+                completion-at-point-functions '(company-complete-common))
+
   (when (maybe-require-package 'company-quickhelp)
     (add-hook 'after-init-hook 'company-quickhelp-mode))
 

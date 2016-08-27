@@ -8,6 +8,7 @@
   (progn
     (with-eval-after-load 'info
       (info-initialize)
+      (define-key magit-mode-map (kbd "<tab>") 'magit-section-toggle)    ; was smart-tab-disabled-major-modes
       (add-to-list 'Info-directory-list
 		   "~/.emacs.d/site-lisp/magit/Documentation/"))
 

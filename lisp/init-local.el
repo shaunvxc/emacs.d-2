@@ -120,6 +120,39 @@
          ("C-z" . undo-tree-visualize))
   )
 
+(use-package golden-ratio
+  :ensure t
+  :init
+  (golden-ratio-mode)
+  :config
+  (progn
+
+    (add-to-list 'golden-ratio-extra-commands 'aw--callback)
+    (add-to-list 'golden-ratio-extra-commands 'ace-window)
+
+    (eval-after-load "golden-ratio"
+      '(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p))
+
+    (defun pl/helm-alive-p ()
+      (and (boundp 'helm-alive-p)
+           (symbol-value 'helm-alive-p)))
+    (setq golden-ratio-exclude-buffer-names '("*helm M-x*" "*undo-tree*")))
+  )
+
+
+(use-package smart-tab
+  :defer t
+  :diminish ""
+  :init (global-smart-tab-mode 1)
+  :config
+  (progn
+    (add-to-list 'smart-tab-disabled-major-modes 'mu4e-compose-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'magit-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'magit)
+    (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
+
+
 
 (use-package csharp-mode
   :mode "\\.cs$"
