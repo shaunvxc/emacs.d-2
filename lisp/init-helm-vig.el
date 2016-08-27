@@ -6,10 +6,14 @@
 
 (use-package helm-swoop
   :ensure t
+  :init
+  (progn
+    (setq helm-swoop-speed-or-color t)
+    )
   :config
   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
   (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
-)
+  )
 
 (use-package helm-config)
 
