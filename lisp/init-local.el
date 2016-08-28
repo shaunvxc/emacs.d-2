@@ -44,6 +44,8 @@
 ;;; smooth scroll
 (setq scroll-conservatively 10000)
 
+(setq scroll-margin 3)
+
 ;; prevent mouse scrolling from sucking ass
 (setq mouse-wheel-scroll-amount '(0.07))
 (setq mouse-wheel-progressive-speed nil)
