@@ -22,6 +22,7 @@
   :init
   (progn
     (require 'helm-config)
+    (setq helm-locate-command "mdfind -name %s %s")
     (setq helm-candidate-number-limit 100)
     ;; From https://gist.github.com/antifuchs/9238468
     (setq helm-idle-delay 0.0 ; update fast sources immediately (doesn't).
@@ -61,6 +62,7 @@
          ("M-x" . helm-M-x)
          ("C-x c o" . helm-occur)
          ("C-x c s" . helm-swoop)
+         ("C-x f" . helm-for-files)
          ("C-x c y" . helm-yas-complete)
 	 ("C-x c SPC" . helm-all-mark-rings)))
 
