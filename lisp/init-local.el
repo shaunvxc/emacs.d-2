@@ -139,6 +139,9 @@
     (setq golden-ratio-exclude-buffer-names '("*helm M-x*" "*undo-tree*")))
   )
 
+(use-package crux
+  :ensure t
+  :bind (("C-a" . crux-move-beginning-of-line)))
 
 (use-package smart-tab
   :defer t
