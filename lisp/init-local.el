@@ -19,6 +19,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
+(setq org-agenda-files (list "~/org"))
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -68,13 +69,18 @@
 ;; y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
+(global-set-key (kbd "M-/") 'hippie-expand)
+
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
+(setq company-global-modes '(not org-mode term-mode magit-mode Magit))
+(setq org-agenda-include-diary t)
+
 ;; helm
 (use-package init-helm-vig
-             :load-path "elisp"
-             )
+  :load-path "elisp"
+  )
 
 ;; magit
 (use-package init-magit-vig
@@ -97,17 +103,6 @@
   :defer t
   :bind (("M-p" . ace-window)))
 
-;; ace-window
-(use-package find-file-in-project
-  :ensure t
-  :defer t
-  :bind (("C-x f" . find-file-in-project)))
-
-;; ;; flycheck
-;; (use-package flycheck
-;;              :config
-;;              (global-flycheck-mode 1))
-
 ;; undo tree
 (use-package undo-tree
   :ensure t
@@ -128,7 +123,6 @@
   (golden-ratio-mode)
   :config
   (progn
-
     (add-to-list 'golden-ratio-extra-commands 'aw--callback)
     (add-to-list 'golden-ratio-extra-commands 'ace-window)
 
@@ -144,20 +138,6 @@
 (use-package crux
   :ensure t
   :bind (("C-a" . crux-move-beginning-of-line)))
-
-(use-package smart-tab
-  :defer t
-  :diminish ""
-  :init (global-smart-tab-mode 1)
-  :config
-  (progn
-    (add-to-list 'smart-tab-disabled-major-modes 'mu4e-compose-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'magit-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'magit)
-    (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
-
-
 
 (use-package csharp-mode
   :mode "\\.cs$"
@@ -177,10 +157,9 @@
              )
 
 (use-package powerline
-             :ensure t
-             :config
-             (powerline-default-theme))
-
+  :ensure t
+  :config
+  (powerline-default-theme))
 
 (use-package dumb-jump
   :ensure t
@@ -198,15 +177,6 @@
           ("M-," . dumb-jump-go-back))
   )
 
-;; (use-package company                    ; Graphical (auto-)completion
-;;              :ensure t
-;;              :init (global-company-mode)
-;;              :config
-;;              (setq company-tooltip-align-annotations t
-;;                    company-tooltip-flip-when-above t
-;;                    ;; Easy navigation to candidates with M-<n>
-;;                    company-show-numbers t)
-;;              :diminish company-mode)
 
 (use-package multiple-cursors                    ; multiple cursors
   :ensure t
