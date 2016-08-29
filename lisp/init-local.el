@@ -114,7 +114,9 @@
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t))
   :bind (("C-x C-u" . undo-tree-visualize)
-         ("C-z" . undo-tree-visualize))
+         ("C-z" . undo-tree-undo)
+         ("M-z" . undo-tree-redo)
+         )
   )
 
 (use-package golden-ratio
