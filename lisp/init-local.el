@@ -19,7 +19,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
-(setq org-agenda-files (list "~/org"))
+(setq org-agenda-files '("~/org/tasks.org" "~/org/life.org"))
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
