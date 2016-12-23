@@ -13,6 +13,13 @@
   :config
   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
   (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+  ;; (let (($map (make-sparse-keymap)))
+  ;;   (set-keymap-parent $map helm-map)
+  ;;   (define-key $map (kbd "C-c C-e") 'helm-swoop-edit)
+  ;;   (define-key $map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  ;;   (define-key $map (kbd "C-s") 'helm-swoop-yank-thing-at-point)
+  ;;   (define-key $map (kbd "^") 'helm-swoop-caret-match)
+  ;;   (delq nil $map))
   )
 
 (use-package helm-config)
@@ -48,11 +55,12 @@
   (setq helm-ff-skip-boring-files t) ;; and this one
   (setq helm-ff-file-name-history-use-recentf t) ;; and this one
   :bind (("C-c h" . helm-command-prefix)
-	 ("C-s" . helm-swoop)
+         ("M-i" . helm-multi-swoop-all)
+         ("C-s" . helm-swoop)
 	 ;; ("M-i" . helm-swoop-back-to-last-point)
 	 ;; ("C-c M-i" . helm-multi-swoop)
 	 ;; ("C-x M-i" . helm-multi-swoop-all)
-	 ("M-i" . helm-multi-swoop-all)
+	 ;; ("C-M-i" . helm-multi-swoop-all)
 	 ("C-x C-f" . helm-find-files)
 	 ("C-x C-b" . switch-to-buffer)
          ("C-h a" . helm-apropos)
@@ -60,6 +68,7 @@
          ("C-x b" . helm-buffers-list)
          ("M-y" . helm-show-kill-ring)
          ("M-x" . helm-M-x)
+         ("C-0" . helm-grep-do-git-grep)
          ("C-x c o" . helm-occur)
          ("C-x c s" . helm-swoop)
          ("C-x f" . helm-for-files)
