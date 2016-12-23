@@ -19,7 +19,6 @@
   (global-set-key (kbd "M-C-/") 'company-complete)
   (global-set-key (kbd "<tab>") 'company-complete)
 
-
   (global-set-key (kbd "M-C-/") 'company-complete)
 
   (when (maybe-require-package 'company-quickhelp)
