@@ -119,28 +119,6 @@
          )
   )
 
-(use-package golden-ratio
-  :ensure t
-  :init
-  (golden-ratio-mode)
-  :config
-  (progn
-    (add-to-list 'golden-ratio-extra-commands 'aw--callback)
-    (add-to-list 'golden-ratio-extra-commands 'ace-window)
-
-    (eval-after-load "golden-ratio"
-      '(add-to-list 'golden-ratio-inhibit-functions 'pl/helm-alive-p))
-
-    (defun pl/helm-alive-p ()
-      (and (boundp 'helm-alive-p)
-           (symbol-value 'helm-alive-p)))
-    (setq golden-ratio-exclude-buffer-names '("*helm M-x*" "*undo-tree*")))
-  )
-
-(use-package crux
-  :ensure t
-  :bind (("C-a" . crux-move-beginning-of-line)))
-
 (use-package csharp-mode
   :mode "\\.cs$"
   :load-path "elisp"
