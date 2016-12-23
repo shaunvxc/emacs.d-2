@@ -97,12 +97,11 @@ typical word processor."
 (setq org-support-shift-select t)
 
 ;;; Capturing
-
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
-         "* NEXT %?\n%U\n" :clock-resume t)
+      `(("t" "todo" entry (file "~/org/tasks.org")  ; "" => org-default-notes-file
+         "* TODO %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
         ))
@@ -156,7 +155,7 @@ typical word processor."
       (quote ((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!/!)")
               (sequence "PROJECT(p)" "|" "DONE(d!/!)" "CANCELLED(c@/!)")
               (sequence "WAITING(w@/!)" "DELEGATED(e!)" "HOLD(h)" "|" "CANCELLED(c@/!)")))
-      org-todo-repeat-to-state "NEXT")
+      org-todo-repeat-to-state "TODO")
 
 (setq org-todo-keyword-faces
       (quote (("NEXT" :inherit warning)
@@ -361,6 +360,8 @@ typical word processor."
   (define-key org-mode-map (kbd "C-M-<up>") 'org-up-element)
   (when *is-a-mac*
     (define-key org-mode-map (kbd "M-h") nil)
+    (define-key org-mode-map (kbd "M-[") 'org-metadown)
+    (define-key org-mode-map (kbd "M-]") 'org-metaup)
     (define-key org-mode-map (kbd "C-c g") 'org-mac-grab-link)))
 
 (after-load 'org
