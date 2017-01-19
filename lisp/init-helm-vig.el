@@ -9,6 +9,9 @@
   :init
   (progn
     (setq helm-swoop-speed-or-color t)
+    ;; Disable pre-input
+    (setq helm-swoop-pre-input-function
+          (lambda () ""))
     )
   :config
   (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
