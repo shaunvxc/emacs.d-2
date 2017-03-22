@@ -133,8 +133,6 @@
 ;; map break-point macro to C-x p
 (global-set-key [(ctrl x) (p)] 'insert_bpt)
 
-;; comment or uncomment blocks
-(global-set-key [(ctrl c) (c)] 'comment-or-uncomment-region)
 (global-set-key (kbd"C-X SPC") 'pop-global-mark)
 
 ;;; insert break point
