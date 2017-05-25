@@ -27,6 +27,11 @@
 
 (use-package helm-config)
 
+(defun my-helm-grep-do-git-grep (not-all)
+  (interactive "P")
+  (helm-grep-git-1 default-directory (null not-all)))
+
+
 (use-package helm
   :diminish helm-mode
   :init
@@ -71,7 +76,7 @@
          ("C-x b" . helm-buffers-list)
          ("M-y" . helm-show-kill-ring)
          ("M-x" . helm-M-x)
-         ("C-0" . helm-grep-do-git-grep)
+         ("C-0" . my-helm-grep-do-git-grep)
          ("C-x c o" . helm-occur)
          ("C-x c s" . helm-swoop)
          ("C-x f" . helm-for-files)

@@ -8,7 +8,7 @@
   (require 'cl))
 
 (setq message-log-max 10000)
-
+(global-set-key  (kbd "C-c c") 'org-capture)
 ;;; Package management
 
 ;; Please don't load outdated byte code
@@ -20,6 +20,9 @@
 
 (package-initialize)
 (setq org-agenda-files '("~/org/tasks.org" "~/org/life.org"))
+
+
+(setq ns-function-modifier 'hyper)  ; make Fn key do Hyper
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -65,17 +68,22 @@
 
 ;; way to similar to exit emacs, unbind it
 (global-unset-key (kbd "C-x c"))
-
+;; Too similar to projectile find file, so unbind it
+(global-unset-key (kbd "C-c C-p"))
 ;; y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "M-/") 'hippie-expand)
-
+(global-set-key (kbd "H-.") 'mc/mark-next-like-this)
+(global-set-key (kbd "H-,") 'mc/mark-prev-like-this)
+(global-set-key (kbd "H-a") 'mc/mark-all-like-this)
 ;; font for all unicode characters
 (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend)
 
 (setq company-global-modes '(not org-mode term-mode magit-mode Magit))
 (setq org-agenda-include-diary t)
+
+(global-set-key (kbd "C-;") 'other-frame)
 
 ;; helm
 (use-package init-helm-vig
@@ -101,7 +109,7 @@
 (use-package ace-window
   :ensure t
   :defer t
-  :bind (("M-p" . ace-window)))
+  :bind (("C-'" . ace-window)))
 
 ;; undo tree
 (use-package undo-tree
@@ -167,6 +175,19 @@
 (use-package expand-region                    ; expand-region
   :ensure t
   :bind ( ("<C-return>" . er/expand-region)))
+
+;; (require 'key-chord)
+;; (setq key-chord-two-keys-delay .015
+;;       key-chord-one-key-delay .020)
+
+;; (key-chord-define-global "xb" 'helm-buffers-list)
+
+;; (key-chord-mode +1)
+
+;; (use-package key-chord                    ; key-chord
+;;   :ensure t
+;;   b  :bind ( ("" . helm-buffers-list)))
+
 
 ;; (use-package dark-mint-theme
 ;;              :ensure t

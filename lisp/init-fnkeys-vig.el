@@ -121,7 +121,8 @@
 (define-key cua-global-keymap [C-return] nil)
 (global-set-key (kbd "<C-return>") 'er/expand-region)
 
-(global-set-key (kbd "C-x f") 'find-file-in-project)
+(global-set-key (kbd "C-x f") 'projectile-find-file)
+(global-set-key (kbd "C-c p f") 'projectile-find-file-in-known-projects)
 
 (global-set-key (kbd "C-c k") 'kill-this-buffer)
 (global-set-key (kbd "C-x C-l") 'toggle-truncate-lines)
