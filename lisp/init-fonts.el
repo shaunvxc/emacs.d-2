@@ -1,7 +1,7 @@
 ;;; Changing font sizes
 
-(require-package 'default-text-scale)
-(add-hook 'after-init-hook 'default-text-scale-mode)
+;; (require-package 'default-text-scale)
+;; (add-hook 'after-init-hook 'default-text-scale-mode)
 
 
 (defun sanityinc/maybe-adjust-visual-fill-column ()

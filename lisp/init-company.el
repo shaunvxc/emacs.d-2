@@ -17,7 +17,7 @@
                   company-dabbrev-other-buffers 'all
                   company-tooltip-align-annotations t))
   (global-set-key (kbd "M-C-/") 'company-complete)
-  (global-set-key (kbd "<tab>") 'company-complete)
+  ;; (global-set-key (kbd "<tab>") 'company-complete)
 
   (global-set-key (kbd "M-C-/") 'company-complete)
 
